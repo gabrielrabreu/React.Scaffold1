@@ -1,6 +1,7 @@
 import { type FC } from "react";
 
 import { useForm } from "@tanstack/react-form";
+import { useNavigate } from "@tanstack/react-router";
 
 import FormField from "@/components/FormField";
 import Button from "@/components/Button";
@@ -16,6 +17,8 @@ const SocialButtons: FC = () => {
 };
 
 const LoginForm: FC = () => {
+  const navigate = useNavigate();
+
   const form = useForm({
     defaultValues: {
       email: "",
@@ -23,6 +26,7 @@ const LoginForm: FC = () => {
     },
     onSubmit: async ({ value }) => {
       console.log(value);
+      navigate({ to: "/" });
     },
   });
 
