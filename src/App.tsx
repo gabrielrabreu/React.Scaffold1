@@ -1,7 +1,9 @@
-import { FC } from "react";
+import { type FC } from "react";
+
+import Login from "@/pages/Login";
 
 const App: FC = () => {
-  return <>App</>;
+  return <Login />;
 };
 
 export default App;
