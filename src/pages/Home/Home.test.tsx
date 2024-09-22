@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { render, fireEvent } from "@testing-library/react";
 
 import { useNavigate } from "@tanstack/react-router";
@@ -10,21 +10,29 @@ vi.mock("@tanstack/react-router", () => ({
 }));
 
 describe("Home", () => {
-  afterEach(() => {
-    vi.restoreAllMocks();
+  it("should render home correctly", () => {
+    render(<Home />);
   });
 
-  it("renders the heading and button", () => {
+  it("should display heading", () => {
     const { getByRole } = render(<Home />);
 
     const heading = getByRole("heading", { name: /home/i });
-    const button = getByRole("button", { name: /to login/i });
 
     expect(heading).toBeInTheDocument();
-    expect(button).toBeInTheDocument();
+    expect(heading).toHaveTextContent("Home");
   });
 
-  it("calls navigate when the button is clicked", () => {
+  it("should display button", () => {
+    const { getByRole } = render(<Home />);
+
+    const button = getByRole("button", { name: /to login/i });
+
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveTextContent("To login");
+  });
+
+  it("should call navigate when the button is clicked", () => {
     const mockNavigate = vi.fn();
     vi.mocked(useNavigate).mockReturnValue(mockNavigate);
 

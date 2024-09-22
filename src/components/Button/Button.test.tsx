@@ -4,13 +4,17 @@ import { render } from "@testing-library/react";
 import Button from "./Button";
 
 describe("Button", () => {
-  it("renders the button", () => {
+  it("should render button", () => {
+    render(<Button />);
+  });
+
+  it("should display children when provided", () => {
     const { getByText } = render(
       <Button>
         <h4>Click me</h4>
       </Button>
     );
 
-    expect(getByText("Click me")).toBeDefined();
+    expect(getByText(/click me/i)).toBeDefined();
   });
 });

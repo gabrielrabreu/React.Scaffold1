@@ -4,7 +4,7 @@ import { type ValidationError } from "@tanstack/react-form";
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
-  errors: ValidationError[];
+  errors?: ValidationError[];
 }
 
 const FormField: FC<Props> = ({ name, label, errors, ...rest }) => {
@@ -20,7 +20,7 @@ const FormField: FC<Props> = ({ name, label, errors, ...rest }) => {
         className="w-full content-center text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
         {...rest}
       />
-      {errors?.length > 0 ? (
+      {errors && errors.length > 0 ? (
         <em
           role="alert"
           className="mt-2 text-sm text-red-600 dark:text-red-500"
