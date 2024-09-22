@@ -20,7 +20,7 @@ const FormField: FC<Props> = ({ name, label, errors, ...rest }) => {
         className="w-full content-center text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
         {...rest}
       />
-      {errors ? (
+      {errors?.length > 0 ? (
         <em
           role="alert"
           className="mt-2 text-sm text-red-600 dark:text-red-500"

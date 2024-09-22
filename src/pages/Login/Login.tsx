@@ -25,7 +25,6 @@ const LoginForm: FC = () => {
       password: "",
     },
     onSubmit: async ({ value }) => {
-      console.log(value);
       navigate({ to: "/" });
     },
   });
