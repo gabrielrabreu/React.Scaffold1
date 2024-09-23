@@ -7,8 +7,11 @@ const Home: FC = () => {
 
   return (
     <div>
-      <h1>Home</h1>
+      <h2 className="text-xl">Home</h2>
+      <p>This is the page content.</p>
+
       <button
+        className="border p-2 mt-4"
         onClick={() => {
           navigate({ to: "/auth/login" });
         }}
