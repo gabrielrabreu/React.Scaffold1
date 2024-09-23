@@ -3,9 +3,7 @@ import { render } from "@testing-library/react";
 
 import Login from "./Login";
 
-vi.mock("@tanstack/react-router", () => ({
-  useNavigate: vi.fn(),
-}));
+vi.mock("@tanstack/react-router");
 
 describe("Login", () => {
   it("should render login", () => {

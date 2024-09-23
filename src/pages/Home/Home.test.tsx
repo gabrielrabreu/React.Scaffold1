@@ -5,9 +5,7 @@ import { useNavigate } from "@tanstack/react-router";
 
 import Home from "./Home";
 
-vi.mock("@tanstack/react-router", () => ({
-  useNavigate: vi.fn(),
-}));
+vi.mock("@tanstack/react-router");
 
 describe("Home", () => {
   it("should render home correctly", () => {

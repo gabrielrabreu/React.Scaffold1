@@ -1,4 +1,5 @@
 import { type FC } from "react";
+import { toast } from "react-toastify";
 
 import { useForm } from "@tanstack/react-form";
 import { useNavigate } from "@tanstack/react-router";
@@ -6,17 +7,28 @@ import { useNavigate } from "@tanstack/react-router";
 import FormField from "@/components/FormField";
 import Button from "@/components/Button";
 
+import { login } from "@/services/api/auth.service";
+
+import { type LoginBody } from "@/types/auth";
+
 const LoginForm: FC = () => {
   const navigate = useNavigate();
 
-  const form = useForm({
+  const form = useForm<LoginBody>({
     defaultValues: {
       email: "",
       password: "",
     },
     onSubmit: async ({ value }) => {
-      console.log(value);
-      navigate({ to: "/" });
+      await login(value)
+        .then((data) => {
+          console.log(data);
+          navigate({ to: "/" });
+        })
+        .catch((error) => {
+          console.log(error.message);
+          toast.error(error.message);
+        });
     },
   });
 
