@@ -4,7 +4,7 @@ import { FaBell } from "react-icons/fa";
 
 const Header: FC = () => {
   return (
-    <header className="border-b bg-indigo-500 text-black p-4">
+    <header className="border-b bg-indigo-500 text-black p-6">
       <nav className="flex justify-between items-center">
         <div></div>
         <div className="flex items-center space-x-4">
