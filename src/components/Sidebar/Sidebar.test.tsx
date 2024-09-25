@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { render } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 
 import { type ReactNode } from "react";
 
@@ -18,20 +18,19 @@ describe("Sidebar", () => {
     render(<Sidebar />);
   });
 
-  it("should display nav", () => {
-    const { getAllByTestId } = render(<Sidebar />);
+  it("should be on expanded mode for default", () => {
+    const { getByTestId } = render(<Sidebar />);
 
-    const navLinks = getAllByTestId("mock-link");
+    expect(getByTestId("expanded-mode")).toBeInTheDocument();
+  });
 
-    expect(navLinks.length).toBe(3);
+  it("should change mode when toggle is clicked", () => {
+    const { getByTestId } = render(<Sidebar />);
 
-    expect(navLinks[0]).toHaveTextContent("Home");
-    expect(navLinks[0]).toHaveAttribute("href", "/");
-    
-    expect(navLinks[1]).toHaveTextContent("Profile");
-    expect(navLinks[1]).toHaveAttribute("href", "/profile");
-    
-    expect(navLinks[2]).toHaveTextContent("Login");
-    expect(navLinks[2]).toHaveAttribute("href", "/auth/login");
+    expect(getByTestId("expanded-mode")).toBeInTheDocument();
+    fireEvent.click(getByTestId("toggle"));
+    expect(getByTestId("collapsed-mode")).toBeInTheDocument();
+    fireEvent.click(getByTestId("toggle"));
+    expect(getByTestId("expanded-mode")).toBeInTheDocument();
   });
 });

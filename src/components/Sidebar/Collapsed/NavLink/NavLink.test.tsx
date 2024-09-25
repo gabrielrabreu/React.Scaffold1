@@ -15,41 +15,20 @@ vi.mock("@tanstack/react-router", () => ({
 }));
 
 describe("NavLink", () => {
-  it("should render sidebar", () => {
-    render(
-      <NavLink title="Menu">
-        <li>Item 1</li>''
-      </NavLink>
-    );
+  it("should render nav link", () => {
+    render(<NavLink />);
   });
 
   it("should display icon", () => {
-    const { getByText, getByTestId } = render(
-      <NavLink title="Menu" icon={<FaHouseChimney data-testid="icon" />}>
-        <li>Item 1</li>''
-      </NavLink>
+    const { getByTestId } = render(
+      <NavLink icon={<FaHouseChimney data-testid="icon" />} />
     );
 
-    expect(getByText("Menu")).toBeInTheDocument();
     expect(getByTestId("icon")).toBeInTheDocument();
   });
 
-  it("should display title", () => {
-    const { getByText } = render(
-      <NavLink title="Menu" to="/">
-        <li>Item 1</li>''
-      </NavLink>
-    );
-
-    expect(getByText("Menu")).toBeInTheDocument();
-  });
-
   it("should have the correct link to", () => {
-    const { getByTestId } = render(
-      <NavLink title="Menu" to="/">
-        {null}
-      </NavLink>
-    );
+    const { getByTestId } = render(<NavLink to="/" />);
 
     const link = getByTestId("mock-link");
     expect(link).toHaveAttribute("href", "/");
