@@ -1,19 +1,24 @@
 import { describe, expect, it } from "vitest";
 import { render } from "@testing-library/react";
 
-import Profile from "./Profile";
+import Profile, { TEST_IDS } from "./Profile";
 
 describe("Profile", () => {
-  it("should render profile correctly", () => {
+  it("should render profile", () => {
     render(<Profile />);
   });
 
   it("should display heading", () => {
-    const { getByRole } = render(<Profile />);
+    const { getByTestId } = render(<Profile />);
 
-    const heading = getByRole("heading", { name: /profile/i });
+    const heading = getByTestId(TEST_IDS.heading);
+    expect(heading).toHaveTextContent(/Profile/i);
+  });
 
-    expect(heading).toBeInTheDocument();
-    expect(heading).toHaveTextContent("Profile");
+  it("should display content", () => {
+    const { getByTestId } = render(<Profile />);
+
+    const content = getByTestId(TEST_IDS.content);
+    expect(content).toHaveTextContent(/This is the page content./i);
   });
 });

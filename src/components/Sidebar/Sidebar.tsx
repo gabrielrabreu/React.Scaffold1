@@ -1,7 +1,7 @@
 import { useState, type FC } from "react";
 
-import Expanded from "./Expanded/Expanded";
-import Collapsed from "./Collapsed/Collapsed";
+import Expanded from "./Expanded";
+import Collapsed from "./Collapsed";
 
 const Sidebar: FC = () => {
   const [isExpanded, setIsExpanded] = useState(true);

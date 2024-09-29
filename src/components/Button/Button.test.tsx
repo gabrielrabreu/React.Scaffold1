@@ -9,12 +9,8 @@ describe("Button", () => {
   });
 
   it("should display children when provided", () => {
-    const { getByText } = render(
-      <Button>
-        <h4>Click me</h4>
-      </Button>
-    );
+    const { getByText } = render(<Button>Click me</Button>);
 
-    expect(getByText(/click me/i)).toBeDefined();
+    expect(getByText(/Click me/i)).toBeDefined();
   });
 });

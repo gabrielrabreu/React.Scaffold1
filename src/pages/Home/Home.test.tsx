@@ -1,19 +1,24 @@
 import { describe, expect, it } from "vitest";
 import { render } from "@testing-library/react";
 
-import Home from "./Home";
+import Home, { TEST_IDS } from "./Home";
 
 describe("Home", () => {
-  it("should render home correctly", () => {
+  it("should render home", () => {
     render(<Home />);
   });
 
   it("should display heading", () => {
-    const { getByRole } = render(<Home />);
+    const { getByTestId } = render(<Home />);
 
-    const heading = getByRole("heading", { name: /home/i });
+    const heading = getByTestId(TEST_IDS.heading);
+    expect(heading).toHaveTextContent(/Home/i);
+  });
 
-    expect(heading).toBeInTheDocument();
-    expect(heading).toHaveTextContent("Home");
+  it("should display content", () => {
+    const { getByTestId } = render(<Home />);
+
+    const content = getByTestId(TEST_IDS.content);
+    expect(content).toHaveTextContent(/This is the page content./i);
   });
 });

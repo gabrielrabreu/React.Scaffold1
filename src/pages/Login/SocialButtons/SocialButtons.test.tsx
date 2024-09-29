@@ -4,7 +4,7 @@ import { render } from "@testing-library/react";
 import SocialButtons from "./SocialButtons";
 
 describe("SocialButtons", () => {
-  it("should render social buttons correctly", () => {
+  it("should render social buttons", () => {
     render(<SocialButtons />);
   });
 

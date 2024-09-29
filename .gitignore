@@ -29,3 +29,6 @@ routeTree.gen.ts
 
 # Vitest
 coverage
+
+# Drafts
+drafts/*

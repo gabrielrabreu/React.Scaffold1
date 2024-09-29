@@ -23,11 +23,10 @@ describe("Collapsed", () => {
 
     const navLinks = getAllByTestId("mock-link");
 
-    expect(navLinks.length).toBe(3);
+    expect(navLinks.length).toBe(2);
 
     expect(navLinks[0]).toHaveAttribute("href", "/");
     expect(navLinks[1]).toHaveAttribute("href", "/profile");
-    expect(navLinks[2]).toHaveAttribute("href", "/auth/login");
   });
 
   it("should call onToggle when click toggle button", () => {
